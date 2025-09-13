@@ -42,6 +42,19 @@ CORS_ALLOWED_ORIGINS = [
 
 CORS_ALLOW_CREDENTIALS = True
 
+# Required for sessions and CSRF cookies to work across domains.
+SESSION_COOKIE_SAMESITE = 'None'
+CSRF_COOKIE_SAMESITE = 'None'
+
+# Must be set to true for SameSite=None to work.
+# Cookies will only be sent over HTTPS.
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
+
+# Required when using PythonAnywhere behind a proxy.
+# This ensures Django correctly identifies the request as HTTPS.
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
 # PostgreSQL — fill with your credentials
 DATABASES = {
     'default': {
