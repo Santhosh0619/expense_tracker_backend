@@ -14,13 +14,13 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',   # keep CSRF on
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-    'corsheaders.middleware.CorsMiddleware',
-    'django.middleware.security.SecurityMiddleware',
 ]
 
 ROOT_URLCONF = 'core.urls'
@@ -40,8 +40,6 @@ WSGI_APPLICATION = 'core.wsgi.application'
 CORS_ALLOWED_ORIGINS = [
     "https://jade-zabaione-63e6cf.netlify.app",
 ]
-
-CORS_ALLOW_ALL_ORIGINS = True
 
 # PostgreSQL — fill with your credentials
 DATABASES = {
