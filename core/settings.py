@@ -38,7 +38,7 @@ TEMPLATES = [{
 WSGI_APPLICATION = 'core.wsgi.application'
 
 CORS_ALLOWED_ORIGINS = [
-    "https://jade-zabaione-63e6cf.netlify.app/",
+    "https://jade-zabaione-63e6cf.netlify.app",
 ]
 
 CORS_ALLOW_ALL_ORIGINS = True
