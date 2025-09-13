@@ -38,8 +38,12 @@ WSGI_APPLICATION = 'core.wsgi.application'
 # PostgreSQL — fill with your credentials
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'santhoshsiva990$default',
+        'USER': 'santhoshsiva990',
+        'PASSWORD': 'Santhosh@10',
+        'HOST': 'santhoshsiva990.mysql.pythonanywhere-services.com',
+        'PORT': '3306',
     }
 }
 
