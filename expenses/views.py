@@ -192,13 +192,17 @@ def export_excel(request, year, month):
     b = Budget.objects.filter(user=request.user, year=year, month=month).first()
 
     wb = Workbook()
+    
+    # 1. Main Expenses Sheet (ws) - Using the default active sheet
     ws = wb.active
-    ws.title = f"{year}-{month:02d}"
+    ws.title = "Expenses" # Give the default sheet a clear name
 
     ws.append(["Date","Category","Amount","Notes"])
     for e in qs.order_by('date','id'):
+        # Ensure data is being written here
         ws.append([str(e.date), e.category.name, float(e.amount), e.notes])
 
+    # 2. Summary Sheet (ws2)
     ws2 = wb.create_sheet("Summary")
     total = qs.aggregate(s=Sum('amount'))['s'] or Decimal('0')
     ws2.append(["Total Spend", float(total)])
@@ -214,8 +218,18 @@ def export_excel(request, year, month):
     for row in (qs.values('category__name').annotate(total=Sum('amount')).order_by('-total')):
         ws2.append([row['category__name'], float(row['total'])])
 
+    # Ensure the workbook is saved correctly to the byte stream
     bio = io.BytesIO()
     wb.save(bio)
     bio.seek(0)
+    
     filename = f"expenses_{year}_{month:02d}.xlsx"
-    return FileResponse(bio, as_attachment=True, filename=filename)
+    
+    response = FileResponse(
+        bio,
+        as_attachment=True,
+        filename=filename,
+        content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+    )
+    return response
+
