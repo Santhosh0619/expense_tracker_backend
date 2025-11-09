@@ -1,10 +1,3 @@
-
----
-
-## 🧩 BACKEND README (Django)
-
-### 📄 **`backend/README.md`**
-```markdown
 # 🖥️ Personal Expense Tracker – Backend
 
 This is the **backend** of the Personal Expense Tracker web application, built using **Django**.  
@@ -62,6 +55,8 @@ python manage.py migrate
 python manage.py runserver
 ```
 
+---
+
 ## 🧩 API Endpoints Overview
 
 | Module | HTTP Method | Endpoint | Description |
@@ -80,6 +75,8 @@ python manage.py runserver
 | **Category Analysis** | `GET` | `/api/analysis/<year>/<month>/` | Get category-wise expense summary and suggestions |
 | **History & Reports** | `GET` | `/api/history/?year=<year>&month=<month>&category=<category>` | View previous months’ expenses |
 | **History & Reports** | `GET` | `/api/export/<year>/<month>/` | Download monthly report as Excel file |
+
+---
 
 ## 📸 Screenshots
 
